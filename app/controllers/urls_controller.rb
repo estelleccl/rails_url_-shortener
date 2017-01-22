@@ -21,14 +21,14 @@ class UrlsController < ApplicationController
 	end
 
 	def show		
-		# @url = Url.find_by(short_url: params[:short_url])
-		# if @url.nil?
-		# 	flash[:alert] = "Ops! Something wrong with the url. Remember it need http/http"
-		# 	redirect_to root_path
-		# else
-		# 	@short_url.counter
-		# 	redirect_to @url.short_url
-		# end
+		@url = Url.find_by(short_url: params[:short_url])
+		if @url.nil?
+			flash[:alert] = "Ops! Invalid url"
+			redirect_to root_path
+		else
+			@url.counter
+			redirect_to @url.long_url
+		end
 	end
 
 	private
