@@ -1,6 +1,6 @@
 class UrlsController < ApplicationController
 
-	respond_to :js, :html
+	respond_to :js
 
 	def new
 		@url = Url.new
@@ -15,8 +15,9 @@ class UrlsController < ApplicationController
         format.js { render 'urls/show_update', long_url: @url.long_url, short_url: @url.short_url}
     	end  
 		else
-			flash[:alert] = "Ops! Something wrong with the url. Remember it need http/http"
-			redirect_to "/url.#{@url.id}"		
+			temp_url = Url.find_by_long_url(@url.long_url)
+			flash[:alert] = "Ops! #{@url.errors.full_messages.to_sentence}. Here is your short-url - #{temp_url.short_url}"
+			redirect_to root_path
 		end
 	end
 
