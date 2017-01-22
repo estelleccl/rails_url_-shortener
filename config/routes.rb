@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root 'urls#new'
-  
+
+  post '/', to: 'urls#create'
+  get '/url', to: 'urls#show'
+  get '/*short_url', to: 'urls#show'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
