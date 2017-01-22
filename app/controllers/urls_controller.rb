@@ -15,13 +15,13 @@ class UrlsController < ApplicationController
         format.js { render 'urls/show_update', long_url: @url.long_url, short_url: @url.short_url}
     	end  
 		else
-			temp_url = Url.find_by_long_url(@url.long_url)
-			flash[:alert] = "Ops! #{@url.errors.full_messages.to_sentence}. Here is your short-url - #{temp_url.short_url}"
+			temp_url = Url.find_by_sql("SELECT * FROM urls WHERE long_url = '#{@url.long_url}'")
+			flash[:alert] = "Ops! #{@url.errors.full_messages.to_sentence}. Here is your short-url - #{temp_url.first.short_url}"
 			redirect_to root_path
 		end
 	end
 
-	def show		
+	def show
 		@url = Url.find_by(short_url: params[:short_url])
 		if @url.nil?
 			flash[:alert] = "Ops! Invalid url"
