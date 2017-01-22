@@ -1,0 +1,17 @@
+<!-- Alert box -->
+<div class="alerts col-md-12 col-centered">
+  <div class="container">
+    <% if notice %>
+      <p class="alert alert-success alert-dismissible fade in navbar-buffer" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= notice %>
+      </p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger alert-dismissible fade in navbar-buffer" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= alert %>
+      </p>
+    <% end %>
+  </div>
+</div>
