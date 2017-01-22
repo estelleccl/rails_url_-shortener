@@ -1,0 +1,3 @@
+$("#url_shorten").html("");
+
+$("#url_shorten").append("<%= j render partial: 'show', locals: {long_url: @url.long_url, short_url: @url.short_url} %>");
