@@ -7,8 +7,9 @@
           <hr class="star-light">
           <%= form_for :url do |f| %>
 						<div class="form-group">
-							<div class="col-lg-8 col-md-offset-1 col-xs-offset-1 text-center wrapper title" data-value="Select a file...">
-								<%= f.text_field :long_url, class: "upload" %>
+							<div class="col-lg-8 col-lg-offset-2 text-center text" data-value="Enter your url">
+								<span class="url_prompt">Enter your long url below: </span>
+								<%= f.text_field :long_url, class: "btn btn-lg btn-outline" %>
 							</div>
 							<div class="row">
 								<div class="col-lg-8 col-lg-offset-2 text-center">
