@@ -23,7 +23,7 @@ class UrlsController < ApplicationController
 	def show
 		if Url.pluck(:short_url).include?(params[:short_url])
 			@url = Url.find_by(short_url: params[:short_url])
-			@url.counter
+			UrlClickCountQueueJob.perform_later(@url)
 			redirect_to @url.long_url
 		else
 			flash[:alert] = "Ops! Invalid url"
