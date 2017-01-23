@@ -8,7 +8,6 @@ class UrlsController < ApplicationController
 
 	def create
 		@url = Url.new(url_params)
-
 		if @url.save
 			flash[:notice] = 'Successfully created shorter url.'
 			respond_to do |format|  
