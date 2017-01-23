@@ -12,6 +12,15 @@ class Url < ActiveRecord::Base
 
   private
   def generate_short_link
-    self.short_url = (0...8).map{(65 + rand(26)).chr}.join
+    random_text = SecureRandom.hex(4)
+    if pluck_short_url.include? random_text
+      generate_short_link
+    else
+      self.short_url = random_text
+    end
+  end
+
+  def pluck_short_url
+    Url.pluck(:short_url)
   end
 end

@@ -22,18 +22,14 @@ class UrlsController < ApplicationController
 	end
 
 	def show
-		@url = Url.find_by(short_url: params[:short_url])
-		if @url.nil?
-			flash[:alert] = "Ops! Invalid url"
-			redirect_to root_path
-		else
+		if Url.pluck(:short_url).include?(params[:short_url])
+			@url = Url.find_by(short_url: params[:short_url])
 			@url.counter
 			redirect_to @url.long_url
+		else
+			flash[:alert] = "Ops! Invalid url"
+			redirect_to root_path
 		end
-	end
-
-	def stress
-		render 'urls/stress'
 	end
 
 	private
