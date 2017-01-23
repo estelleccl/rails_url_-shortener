@@ -31,6 +31,10 @@ class UrlsController < ApplicationController
 		end
 	end
 
+	def stress_test
+		render 'urls/stress'
+	end
+
 	private
 	def url_params
 		params.require(:url).permit(:long_url)
