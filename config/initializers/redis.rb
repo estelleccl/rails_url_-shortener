@@ -1,1 +1,1 @@
-$redis = Redis.new(url: ENV['redis://rediscloud:GqkPc5g9sx10w8js@redis-16371.c11.us-east-1-3.ec2.cloud.redislabs.com:16371'])
+$redis = Redis.new(url: ENV['REDISTOGO_URL'])
