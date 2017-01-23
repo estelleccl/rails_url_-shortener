@@ -5,4 +5,4 @@ Attempts to stimulate and overcome if 10,000 people trying to shorten urls every
 - use sql statement instead of activerecord
 - index the url table and short_url
 - pluck all the short_url from the database and find whether the url exist of not - if exist then only search
-- wip - if server busy - push to background job via sidekiq/active job
+- click counter push to background job via sidekiq/active job
