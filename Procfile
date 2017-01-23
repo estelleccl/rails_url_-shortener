@@ -1,2 +1,2 @@
-web: bundle exec unicorn -p $PORT -c ./config/unicorn.rb
+web: bin/rails server -p $PORT -e $RAILS_ENV
 worker: bundle exec sidekiq -r./config/environment.rb
